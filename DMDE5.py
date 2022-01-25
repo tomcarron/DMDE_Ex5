@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from astropy.cosmology import Planck18_arXiv_v2 as P18
 from astropy.cosmology import FlatwCDM
 from astropy.cosmology import w0wzCDM
-from astropy.cosmology import wCDM
+from astropy.cosmology import FlatwCDM
 import pandas as pd
 
 '''
@@ -53,8 +53,8 @@ c) Explain what you see in your plot
 z2=np.linspace(1e-2,1.4,1000)
 #Set a comsology and then use cosmo.distmod(z)
 #Planck18
-variable=w0wzCDM(H0=67,Om0=0.3,Ode0=0.7, w0=-0.9, wz=0.5)
-node=FlatwCDM(H0=67,Om0=1.0)
+EdS=FlatwCDM(H0=70,Om0=1.0,w0=0.0)
+h04=FlatwCDM(H0=40,Om0=0.3, w0=-1)
 #print(node.Ode0)
 
 plt.figure(11)
@@ -70,8 +70,8 @@ plt.savefig('plots/fig11.png',dpi=400,bbox_inches='tight')
 plt.figure(0)
 plt.scatter(z,distmod,s=1)
 plt.plot(z2,P18.distmod(z2),'--',color='red',label='Planck 2018')
-plt.plot(z2,variable.distmod(z2),'--',color="green",label="Variable DE")
-plt.plot(z2,node.distmod(z2),'--',color="orange",label="No DE")
+plt.plot(z2,h04.distmod(z2),'--',color="green",label="$h$=0.4")
+plt.plot(z2,EdS.distmod(z2),'--',color="orange",label="EdS")
 plt.xlabel('$z$')
 plt.ylabel('$(m_V - M_V)$')
 plt.legend()
@@ -342,7 +342,7 @@ for x in lines11:
     TE11.append(float(x.split()[3]))
 file11.close()
 
-plt.figure(11)
+plt.figure(12)
 plt.plot(l,TT,label='$h=0.70$(default)')
 plt.plot(l8,TT8,label='$h=0.45$')
 plt.plot(l9,TT9,label='$h=0.95$')
@@ -351,7 +351,7 @@ plt.ylabel('$l(l+1)C_l^{TT} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig12.png',dpi=400,bbox_inches='tight')
 
-plt.figure(12)
+plt.figure(13)
 plt.plot(l,EE,label='$h=0.70$(default)')
 plt.plot(l8,EE8,label='$h=0.45$')
 plt.plot(l9,EE9,label='$h=0.95$')
@@ -360,7 +360,7 @@ plt.ylabel('$l(l+1)C_l^{EE} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig13.png',dpi=400,bbox_inches='tight')
 
-plt.figure(13)
+plt.figure(14)
 plt.plot(l,TE,label='$h=0.70$(default)')
 plt.plot(l5,TE5,label='$h=0.45$')
 plt.plot(l6,TE6,label='$h=0.95$')
@@ -369,7 +369,7 @@ plt.ylabel('$l(l+1)C_l^{TE} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig14.png',dpi=400,bbox_inches='tight')
 
-plt.figure(14)
+plt.figure(15)
 plt.plot(l,TT,label='$h=0.70$(default)')
 plt.plot(l8,TT8,label='$h=0.45$')
 plt.plot(l9,TT9,label='$h=0.95$')
@@ -380,7 +380,7 @@ plt.ylabel('$l(l+1)C_l^{TT} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig15.png',dpi=400,bbox_inches='tight')
 
-plt.figure(15)
+plt.figure(16)
 plt.plot(l,EE,label='$h=0.70$(default)')
 plt.plot(l8,EE8,label='$h=0.45$')
 plt.plot(l9,EE9,label='$h=0.95$')
@@ -391,7 +391,7 @@ plt.ylabel('$l(l+1)C_l^{EE} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig16.png',dpi=400,bbox_inches='tight')
 
-plt.figure(16)
+plt.figure(17)
 plt.plot(l,TE,label='$h=0.70$(default)')
 plt.plot(l5,TE5,label='$h=0.45$')
 plt.plot(l6,TE6,label='$h=0.95$')
