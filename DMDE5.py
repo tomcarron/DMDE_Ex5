@@ -316,6 +316,32 @@ for x in lines9:
     TE9.append(float(x.split()[3]))
 file9.close()
 
+file10=open("data/h045_k_neg_01.dat","r")
+lines10=file10.readlines()
+l10=[]
+TT10=[]
+EE10=[]
+TE10=[]
+for x in lines10:
+    l10.append(float(x.split()[0]))
+    TT10.append(float(x.split()[1]))
+    EE10.append(float(x.split()[2]))
+    TE10.append(float(x.split()[3]))
+file10.close()
+
+file11=open("data/h095_k_0025.dat","r")
+lines11=file11.readlines()
+l11=[]
+TT11=[]
+EE11=[]
+TE11=[]
+for x in lines11:
+    l11.append(float(x.split()[0]))
+    TT11.append(float(x.split()[1]))
+    EE11.append(float(x.split()[2]))
+    TE11.append(float(x.split()[3]))
+file11.close()
+
 plt.figure(11)
 plt.plot(l,TT,label='$h=0.70$(default)')
 plt.plot(l8,TT8,label='$h=0.45$')
@@ -342,5 +368,38 @@ plt.xlabel('$l$')
 plt.ylabel('$l(l+1)C_l^{TE} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig14.png',dpi=400,bbox_inches='tight')
+
+plt.figure(14)
+plt.plot(l,TT,label='$h=0.70$(default)')
+plt.plot(l8,TT8,label='$h=0.45$')
+plt.plot(l9,TT9,label='$h=0.95$')
+plt.plot(l10,TT10,label='$h=0.45$, $\Omega_k=-0.1$')
+plt.plot(l11,TT11,label='$h=0.95$, $\Omega_k=0.025$')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{TT} /2\pi$ $[\mu K^2]$')
+plt.legend()
+plt.savefig('plots/fig15.png',dpi=400,bbox_inches='tight')
+
+plt.figure(15)
+plt.plot(l,EE,label='$h=0.70$(default)')
+plt.plot(l8,EE8,label='$h=0.45$')
+plt.plot(l9,EE9,label='$h=0.95$')
+plt.plot(l10,EE10,label='$h=0.45$, $\Omega_k=-0.1$')
+plt.plot(l11,EE11,label='$h=0.95$, $\Omega_k=0.025$')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{EE} /2\pi$ $[\mu K^2]$')
+plt.legend()
+plt.savefig('plots/fig16.png',dpi=400,bbox_inches='tight')
+
+plt.figure(16)
+plt.plot(l,TE,label='$h=0.70$(default)')
+plt.plot(l5,TE5,label='$h=0.45$')
+plt.plot(l6,TE6,label='$h=0.95$')
+plt.plot(l10,TE10,label='$h=0.45$, $\Omega_k=-0.1$')
+plt.plot(l11,TE11,label='$h=0.95$, $\Omega_k=0.025$')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{TE} /2\pi$ $[\mu K^2]$')
+plt.legend()
+plt.savefig('plots/fig17.png',dpi=400,bbox_inches='tight')
 
 plt.show()
