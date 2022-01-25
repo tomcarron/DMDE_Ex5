@@ -55,8 +55,17 @@ z2=np.linspace(1e-2,1.4,1000)
 #Planck18
 variable=w0wzCDM(H0=67,Om0=0.3,Ode0=0.7, w0=-0.9, wz=0.5)
 node=FlatwCDM(H0=67,Om0=1.0)
-print(node.Ode0)
+#print(node.Ode0)
 
+plt.figure(11)
+plt.scatter(z,distmod,s=1)
+#plt.plot(z2,P18.distmod(z2),'--',color='red',label='Planck 2018')
+#plt.plot(z2,variable.distmod(z2),'--',color="green",label="Variable DE")
+#plt.plot(z2,node.distmod(z2),'--',color="orange",label="No DE")
+plt.xlabel('$z$')
+plt.ylabel('$(m_V - M_V)$')
+#plt.legend()
+plt.savefig('plots/fig11.png',dpi=400,bbox_inches='tight')
 
 plt.figure(0)
 plt.scatter(z,distmod,s=1)
@@ -99,7 +108,7 @@ plt.plot(l,TT,label='TT')
 plt.plot(l,EE,label='EE')
 plt.plot(l,TE,label='TE')
 plt.xlabel('l')
-plt.ylabel('TT/EE/TE')
+plt.ylabel('$l(l+1)C_l /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig1.png',dpi=400,bbox_inches='tight')
 
@@ -109,22 +118,22 @@ plots.
 '''
 plt.figure(2)
 plt.plot(l,TT,label='TT')
-plt.xlabel('l')
-plt.ylabel('TT')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{TT} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig2.png',dpi=400,bbox_inches='tight')
 
 plt.figure(3)
 plt.plot(l,EE,label='EE')
-plt.xlabel('l')
-plt.ylabel('EE')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{EE} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig3.png',dpi=400,bbox_inches='tight')
 
 plt.figure(4)
 plt.plot(l,TE,label='TE')
-plt.xlabel('l')
-plt.ylabel('TE')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{TE} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig4.png',dpi=400,bbox_inches='tight')
 
@@ -177,8 +186,8 @@ plt.plot(l,TT,label='$\Omega_b h^2=0.0226$(default)')
 plt.plot(l2,TT2,label='$\Omega_b h^2=0.01$')
 plt.plot(l3,TT3,label='$\Omega_b h^2=0.1$')
 plt.plot(l4,TT4,label='$\Omega_b h^2=0.05$')
-plt.xlabel('l')
-plt.ylabel('TT')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{TT} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig5.png',dpi=400,bbox_inches='tight')
 
@@ -187,8 +196,8 @@ plt.plot(l,EE,label='$\Omega_b h^2=0.0226$(default)')
 plt.plot(l2,EE2,label='$\Omega_b h^2=0.01$')
 plt.plot(l3,EE3,label='$\Omega_b h^2=0.1$')
 plt.plot(l4,EE4,label='$\Omega_b h^2=0.05$')
-plt.xlabel('l')
-plt.ylabel('EE')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{EE} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig6.png',dpi=400,bbox_inches='tight')
 
@@ -197,8 +206,8 @@ plt.plot(l,TE,label='$\Omega_b h^2=0.0226$(default)')
 plt.plot(l2,TE2,label='$\Omega_b h^2=0.01$')
 plt.plot(l3,TE3,label='$\Omega_b h^2=0.1$')
 plt.plot(l4,TE4,label='$\Omega_b h^2=0.05$')
-plt.xlabel('l')
-plt.ylabel('TE')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{TE} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig7.png',dpi=400,bbox_inches='tight')
 
@@ -250,8 +259,8 @@ plt.plot(l,TT,label='$\Omega_c h^2=0.112$(default)')
 plt.plot(l5,TT5,label='$\Omega_c h^2=0.05$')
 plt.plot(l6,TT6,label='$\Omega_c h^2=0.15$')
 plt.plot(l7,TT7,label='$\Omega_c h^2=0.2$')
-plt.xlabel('l')
-plt.ylabel('TT')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{TT} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig8.png',dpi=400,bbox_inches='tight')
 
@@ -260,8 +269,8 @@ plt.plot(l,EE,label='$\Omega_c h^2=0.112$(default)')
 plt.plot(l5,EE5,label='$\Omega_c h^2=0.05$')
 plt.plot(l6,EE6,label='$\Omega_c h^2=0.15$')
 plt.plot(l7,EE7,label='$\Omega_c h^2=0.2$')
-plt.xlabel('l')
-plt.ylabel('EE')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{EE} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig9.png',dpi=400,bbox_inches='tight')
 
@@ -270,10 +279,68 @@ plt.plot(l,TE,label='$\Omega_c h^2=0.112$(default)')
 plt.plot(l5,TE5,label='$\Omega_c h^2=0.05$')
 plt.plot(l6,TE6,label='$\Omega_c h^2=0.15$')
 plt.plot(l7,TE7,label='$\Omega_c h^2=0.2$')
-plt.xlabel('l')
-plt.ylabel('TE')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{TE} /2\pi$ $[\mu K^2]$')
 plt.legend()
 plt.savefig('plots/fig10.png',dpi=400,bbox_inches='tight')
 
+'''
+e) Change all values back to defaults, and then modify the Hubble constant first to h =
+0.45 and then to h = 0.95. In each of these cases, for what values of ΩK can we
+approximately reproduce the acoustic peaks as seen in the default plots? Also note
+down Ωm and ΩΛ in these cases and comment on their values.
+'''
+file8=open("data/h045.dat","r")
+lines8=file8.readlines()
+l8=[]
+TT8=[]
+EE8=[]
+TE8=[]
+for x in lines8:
+    l8.append(float(x.split()[0]))
+    TT8.append(float(x.split()[1]))
+    EE8.append(float(x.split()[2]))
+    TE8.append(float(x.split()[3]))
+file8.close()
+
+file9=open("data/h095.dat","r")
+lines9=file9.readlines()
+l9=[]
+TT9=[]
+EE9=[]
+TE9=[]
+for x in lines9:
+    l9.append(float(x.split()[0]))
+    TT9.append(float(x.split()[1]))
+    EE9.append(float(x.split()[2]))
+    TE9.append(float(x.split()[3]))
+file9.close()
+
+plt.figure(11)
+plt.plot(l,TT,label='$h=0.70$(default)')
+plt.plot(l8,TT8,label='$h=0.45$')
+plt.plot(l9,TT9,label='$h=0.95$')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{TT} /2\pi$ $[\mu K^2]$')
+plt.legend()
+plt.savefig('plots/fig12.png',dpi=400,bbox_inches='tight')
+
+plt.figure(12)
+plt.plot(l,EE,label='$h=0.70$(default)')
+plt.plot(l8,EE8,label='$h=0.45$')
+plt.plot(l9,EE9,label='$h=0.95$')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{EE} /2\pi$ $[\mu K^2]$')
+plt.legend()
+plt.savefig('plots/fig13.png',dpi=400,bbox_inches='tight')
+
+plt.figure(13)
+plt.plot(l,TE,label='$h=0.70$(default)')
+plt.plot(l5,TE5,label='$h=0.45$')
+plt.plot(l6,TE6,label='$h=0.95$')
+plt.xlabel('$l$')
+plt.ylabel('$l(l+1)C_l^{TE} /2\pi$ $[\mu K^2]$')
+plt.legend()
+plt.savefig('plots/fig14.png',dpi=400,bbox_inches='tight')
 
 plt.show()
